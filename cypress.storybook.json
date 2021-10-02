@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3003/",
+  "defaultCommandTimeout": 30000,
+  "viewportWidth": 1000,
+  "viewportHeight": 568,
+  "integrationFolder": "components",
+  "testFiles": "**/*cy.{js,jsx,ts,tsx}"
+}

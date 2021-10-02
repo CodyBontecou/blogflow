@@ -1,0 +1,7 @@
+{
+  "viewportWidth": 1000,
+  "viewportHeight": 568,
+  "defaultCommandTimeout": 30000,
+  "integrationFolder": "components",
+  "testFiles": "**/*cy.{js,jsx,ts,tsx}"
+}
