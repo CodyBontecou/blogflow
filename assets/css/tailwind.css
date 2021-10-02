@@ -5,3 +5,7 @@
 .divider {
   @apply border-b border-gray-300;
 }
+
+.blue-button {
+  @apply flex items-center justify-center bg-blue-ninja text-white font-semibold rounded-md px-2 py-2 md:py-1;
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="text-reader">
+    <label class="text-reader blue-button">
       Upload File
       <input type="file" @change="loadTextFromFile" />
     </label>
@@ -14,15 +14,20 @@ export default defineComponent({
   data() {
     return {
       text: 'here',
+      error: false,
     }
   },
   methods: {
     loadTextFromFile(event: any) {
-      const file = event.target.files[0]
-      const reader = new FileReader()
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0]
+        const reader = new FileReader()
 
-      reader.onload = (e) => this.$emit('load', e.target.result)
-      reader.readAsText(file)
+        reader.onload = (e) => this.$emit('load', e.target.result)
+        reader.readAsText(file)
+      } else {
+        this.error = true
+      }
     },
   },
 })
@@ -30,9 +35,18 @@ export default defineComponent({
 
 <style scoped>
 .text-reader {
-  @apply px-2 relative overflow-hidden inline-block rounded cursor-pointer bg-blue-ninja text-white;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  border-radius: 5px;
+  cursor: pointer;
 }
 .text-reader input {
-  @apply absolute top-0 left-0 z-0 opacity-0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
 }
 </style>
