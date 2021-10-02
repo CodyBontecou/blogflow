@@ -1,10 +1,14 @@
 <template>
-  <editor
-    ref="toastuiEditor"
-    preview-style="tab"
-    :initial-value="editorText"
-    @change="onEditorChange"
-  />
+  <div>
+    <FileReader @load="onFileRead($event)" />
+    <editor
+      ref="toastuiEditor"
+      height="80vh"
+      preview-style="tab"
+      :initial-value="editorText"
+      @change="onEditorChange"
+    />
+  </div>
 </template>
 
 <script>
@@ -33,6 +37,10 @@ export default {
     },
     onEditorChange() {
       this.getMarkdown()
+    },
+    onFileRead(event) {
+      this.contentMarkdown = event
+      this.$refs.toastuiEditor.invoke('setMarkdown', this.contentMarkdown)
     },
   },
 }
