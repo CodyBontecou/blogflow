@@ -11,12 +11,6 @@
 import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
-  data() {
-    return {
-      text: 'here',
-      error: false,
-    }
-  },
   methods: {
     loadTextFromFile(event: Event): void {
       const target = event.target as HTMLInputElement
@@ -29,7 +23,7 @@ export default defineComponent({
         reader.onload = () => this.$emit('load', reader.result)
         reader.readAsText(file)
       } else {
-        this.error = true
+        this.$emit('error', true)
       }
     },
   },
