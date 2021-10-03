@@ -18,12 +18,15 @@ export default defineComponent({
     }
   },
   methods: {
-    loadTextFromFile(event: any) {
-      if (event.target.files.length > 0) {
-        const file = event.target.files[0]
+    loadTextFromFile(event: Event): void {
+      const target = event.target as HTMLInputElement
+      const files = target.files
+
+      if (files != null && files.length > 0) {
+        const file = files[0]
         const reader = new FileReader()
 
-        reader.onload = (e) => this.$emit('load', e.target.result)
+        reader.onload = () => this.$emit('load', reader.result)
         reader.readAsText(file)
       } else {
         this.error = true
