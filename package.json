@@ -10,7 +10,7 @@
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "test": "ts-jest",
-    "storybook": "yarn nuxt storybook",
+    "storybook": "yarn nuxt storybook -s static",
     "cypress:open": "yarn cypress open",
     "cypress:open:storybook": "yarn cypress open --config-file cypress.storybook.json"
   },
