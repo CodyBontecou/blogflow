@@ -10,8 +10,22 @@ export default {
   },
 }
 
-export const Default = (args, { argTypes }) => ({
+export const Default = (_args, { argTypes }) => ({
   components: { ToggleButton },
   props: Object.keys(argTypes),
   template: '<ToggleButton :name="name" :title="title" :activeColor="color" />',
+})
+
+export const Toggled = (_args, { argTypes }) => ({
+  components: { ToggleButton },
+  props: Object.keys(argTypes),
+  template:
+    '<ToggleButton :name="name" :title="title" :activeColor="color" :toggled="true" />',
+})
+
+export const Disabled = (_args, { argTypes }) => ({
+  components: { ToggleButton },
+  props: Object.keys(argTypes),
+  template:
+    '<ToggleButton :name="name" :title="title" :activeColor="color" :disabled="true" />',
 })
