@@ -15,10 +15,11 @@
           'mt-10': i === 0,
         }"
       />
-      <div v-if="posts.length === 0" class="flex items-center justify-center">
-        <p class="mt-10 font-medium text-gray-400">
-          You haven't posted anything yet
-        </p>
+      <div
+        v-if="posts.length === 0"
+        class="mt-10 flex items-center justify-center"
+      >
+        <p class="font-medium text-gray-400">You haven't posted anything yet</p>
       </div>
     </div>
   </div>
