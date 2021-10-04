@@ -1,8 +1,8 @@
 <template>
-  <div class="circle-container">
+  <div class="flex -space-x-1 overflow-hidden">
     <nuxt-img
       v-if="user.imageSrc"
-      class="absolute"
+      class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
       width="60"
       :src="user.imageSrc"
       :alt="imgAlt"
@@ -55,9 +55,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.circle-container {
-  @apply flex items-center justify-center rounded-full border border-gray-300 relative overflow-hidden w-4 h-4 p-4 md:w-6 md:h-6 md:p-6;
-}
-</style>

@@ -1,6 +1,11 @@
 <template>
-  <div class="circle-container">
-    <nuxt-img class="absolute" :width="width" :src="imageSrc" :alt="imageAlt" />
+  <div class="flex -space-x-1 overflow-hidden">
+    <nuxt-img
+      width="60"
+      class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
+      :src="imageSrc"
+      :alt="imageAlt"
+    />
   </div>
 </template>
 
@@ -17,11 +22,6 @@ export default defineComponent({
       required: true,
       type: String,
     },
-    width: {
-      required: false,
-      type: String,
-      default: '60',
-    },
   },
   setup(props) {
     const { imageSrc } = toRefs(props)
@@ -30,9 +30,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.circle-container {
-  @apply flex items-center justify-center rounded-full border border-gray-300 relative overflow-hidden w-4 h-4 p-4 md:w-6 md:h-6 md:p-6;
-}
-</style>
