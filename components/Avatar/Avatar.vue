@@ -1,57 +1,32 @@
 <template>
   <div class="circle-container">
-    <nuxt-img
-      v-if="user.imageSrc"
-      class="absolute"
-      width="60"
-      :src="user.imageSrc"
-      :alt="imgAlt"
-    />
-    <span v-else>{{ userAcronym }}</span>
+    <nuxt-img class="absolute" :width="width" :src="imageSrc" :alt="imageAlt" />
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  PropType,
-  toRefs,
-} from '@nuxtjs/composition-api'
-import { User } from 'types/user-types'
-
-export function getUserAcronym(user: User) {
-  return (
-    user.firstName.charAt(0).toUpperCase() +
-    user.lastName.charAt(0).toUpperCase()
-  )
-}
-
-export function getFullName(user: User) {
-  return `${user.firstName} ${user.lastName}`
-}
+import { defineComponent, toRefs } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   props: {
-    user: {
+    imageSrc: {
       required: true,
-      type: Object as PropType<User>,
+      type: String,
+    },
+    imageAlt: {
+      required: true,
+      type: String,
+    },
+    width: {
+      required: false,
+      type: String,
+      default: '60',
     },
   },
   setup(props) {
-    const { user } = toRefs(props)
+    const { imageSrc } = toRefs(props)
 
-    const userAcronym = computed(() => {
-      return getUserAcronym(user.value)
-    })
-    const fullName = computed(() => {
-      return getFullName(user.value)
-    })
-    const imgAlt = computed(() => {
-      return `Avatar with image of ${fullName.value}`
-    })
-
-    return { userAcronym, fullName, imgAlt }
+    return { imageSrc }
   },
 })
 </script>

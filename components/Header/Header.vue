@@ -2,7 +2,7 @@
   <div class="py-2 flex justify-between items-center border-b border-gray-200">
     <NuxtLink to="/" class="text-sm md:text-base font-bold">Blogflow</NuxtLink>
     <div>
-      <Avatar
+      <user-toggle
         :user="user"
         class="cursor-pointer"
         @click.native="toggleMenu()"
@@ -15,8 +15,10 @@
 <script lang="ts">
 import { defineComponent, PropType, toRefs, ref } from '@nuxtjs/composition-api'
 import { User } from 'types/user-types'
+import UserToggle from '../UserToggle/UserToggle.vue'
 
 export default defineComponent({
+  components: { UserToggle },
   props: {
     user: {
       required: true,
